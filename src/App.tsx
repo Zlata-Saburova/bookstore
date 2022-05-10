@@ -1,4 +1,4 @@
-import React from "react";
+import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { MainTemplate } from "./components/MainTemplate";
 import GlobalStyles from "./GlobalStyles";
@@ -8,7 +8,9 @@ export const App = () => {
     <>
       <GlobalStyles />
       <StyledApp>
-        <MainTemplate />
+        <Routes>
+          <Route path="/" element={<MainTemplate />} />
+        </Routes>
       </StyledApp>
     </>
   );
