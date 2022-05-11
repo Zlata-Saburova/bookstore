@@ -1,4 +1,4 @@
-import { StyledHeaderFindButton } from "./StyledHeaderFindButton";
+import { StyledHeaderFindButton } from "./styles";
 
 export const HeaderFindButton = () => {
   return <StyledHeaderFindButton />;

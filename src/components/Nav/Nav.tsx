@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import likes from "../../assets/svg/likes.svg";
 import cart from "../../assets/svg/cart.svg";
-import accaunt from "../../assets/svg/accaunt.svg";
+import account from "../../assets/svg/account..svg";
+import { StyledIcon, StyledNav } from "./styles";
 
 export const Nav = () => {
   return (
@@ -14,21 +14,8 @@ export const Nav = () => {
         <StyledIcon src={cart} alt="cart" />
       </Link>
       <Link to="">
-        <StyledIcon src={accaunt} alt="accaunt" />
+        <StyledIcon src={account} alt="accaunt" />
       </Link>
     </StyledNav>
   );
 };
-
-const StyledNav = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  max-width: 184px;
-  width: 100%;
-`;
-
-const StyledIcon = styled.img`
-  width: 24px;
-  height: 24px;
-`;

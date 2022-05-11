@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { SearchInput } from "../SearchInput/SearchInput";
 import { HeaderFindButton } from "../HeaderFindButton/HeaderFindButton";
+import { StyledHeaderForm } from "./styles";
 
 export const HeaderForm = () => {
   return (
@@ -10,10 +10,3 @@ export const HeaderForm = () => {
     </StyledHeaderForm>
   );
 };
-
-const StyledHeaderForm = styled.form`
-  position: relative;
-
-  max-width: 542px;
-  width: 100%;
-`;
