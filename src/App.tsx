@@ -1,16 +1,13 @@
-import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
-import { MainTemplate } from "./components/MainTemplate";
 import GlobalStyles from "./GlobalStyles";
+import { AppRouter } from "./router/AppRouter";
 
 export const App = () => {
   return (
     <>
       <GlobalStyles />
       <StyledApp>
-        <Routes>
-          <Route path="/" element={<MainTemplate />} />
-        </Routes>
+        <AppRouter />
       </StyledApp>
     </>
   );
