@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import { routes } from "../routes/routes";
+import { MainTemplate } from "../components/MainTemplate";
 
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path={routes.HOME} element={<MainTemplate />} />
+      <Route path="/bookstore" element={<MainTemplate />} />
     </Routes>
   );
 };
