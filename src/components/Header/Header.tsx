@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/svg/logo.svg";
 import { HeaderForm } from "../HeaderForm/HeaderForm";
 import { Nav } from "../Nav/Nav";
@@ -7,7 +8,9 @@ export const Header = () => {
   return (
     <StyledHeader>
       <HeaderContainer>
-        <Logo src={logo} alt="logo" />
+        <Link to="/bookstore">
+          <Logo src={logo} alt="logo" />
+        </Link>
         <HeaderForm />
         <Nav />
       </HeaderContainer>
