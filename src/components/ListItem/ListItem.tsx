@@ -1,4 +1,3 @@
-import React from "react";
 import { INewBookApi } from "../../services/types";
 import {
   StyledBookSubtitle,
@@ -13,7 +12,7 @@ interface IProps {
 
 export const ListItem = ({ book }: IProps) => {
   return (
-    <StyledListItem>
+    <StyledListItem whileHover={{ scale: 1.05 }}>
       <img src={book.image} alt={book.title} />
       <StyledBookTitle>{book.title}</StyledBookTitle>
       <StyledBookSubtitle>{book.subtitle}</StyledBookSubtitle>
