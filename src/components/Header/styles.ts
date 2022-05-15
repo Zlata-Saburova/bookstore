@@ -1,20 +1,10 @@
 import styled from "styled-components";
 
 const StyledHeader = styled.div`
-  max-width: 1920px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 16px;
-`;
-
-const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  max-width: 1120px;
-  width: 100%;
-  margin: 0 auto;
   margin-bottom: 72px;
   padding-top: 24px;
   padding-bottom: 24px;
@@ -28,4 +18,4 @@ const Logo = styled.img`
   cursor: pointer;
 `;
 
-export { StyledHeader, HeaderContainer, Logo };
+export { StyledHeader, Logo };
