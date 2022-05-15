@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { List } from "../components/List/List";
 import { bookApi } from "../services/bookService";
 import { INewBooksApi } from "../services/types";
+import { Title } from "../Title/Title";
 
 export const NewBooks = () => {
   console.log(bookApi.getNewBooks());
@@ -16,5 +17,10 @@ export const NewBooks = () => {
       setNewBooks(books);
     });
   }, []);
-  return <List books={newBooks.books} />;
+  return (
+    <>
+      <Title>New Releases Books</Title>
+      <List books={newBooks.books} />
+    </>
+  );
 };
