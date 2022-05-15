@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { typography } from "../../ui/typography";
+import { motion } from "framer-motion";
 
-const StyledListItem = styled.li`
+const StyledListItem = styled(motion.li)`
   display: flex;
   flex-direction: column;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
   padding: 0 16px;
+
+  cursor: pointer;
 `;
 
 const StyledBookTitle = styled.h3`
