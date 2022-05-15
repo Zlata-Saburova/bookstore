@@ -15,6 +15,7 @@ const HeaderContainer = styled.div`
   max-width: 1120px;
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 72px;
   padding-top: 24px;
   padding-bottom: 24px;
 
