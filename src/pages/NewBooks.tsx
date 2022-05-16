@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { List } from "../components/List/List";
 import { bookApi } from "../services/bookService";
 import { INewBooksApi } from "../services/types";
-import { Title } from "../Title/Title";
+import { Title } from "../components/Title/Title";
 
 export const NewBooks = () => {
-  console.log(bookApi.getNewBooks());
   const [newBooks, setNewBooks] = useState<INewBooksApi>({
     books: [],
     error: "",
