@@ -4,6 +4,8 @@ const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
 
+  margin-top: 72px;
+
   border-top: 1px solid rgb(231, 231, 231);
 `;
 
