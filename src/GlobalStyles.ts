@@ -7,6 +7,10 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 } 
 
+ul {
+  list-style-type: none;
+}
+
 button {
   font-family: inherit;
 
