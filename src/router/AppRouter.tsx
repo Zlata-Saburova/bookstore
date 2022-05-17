@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { MainTemplate } from "../components/MainTemplate";
+import { BookDetails } from "../pages/BookDetails";
 import { Home } from "../pages/Home";
 import { NewBooks } from "../pages/NewBooks";
 import { Search } from "../pages/Search";
@@ -11,6 +12,7 @@ export const AppRouter = () => {
         <Route path="/bookstore" element={<Home />} />
         <Route path="/bookstore/new" element={<NewBooks />} />
         <Route path="search" element={<Search />} />
+        <Route path="/bookstore/books/:id" element={<BookDetails />} />
       </Route>
     </Routes>
   );
