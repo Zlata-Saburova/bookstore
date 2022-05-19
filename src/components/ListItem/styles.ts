@@ -6,6 +6,8 @@ const StyledListItem = styled(motion.li)`
   display: flex;
   flex-direction: column;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 5px solid rgb(166, 156, 172);
+  border-radius: 20px;
 
   padding: 0 16px;
 
