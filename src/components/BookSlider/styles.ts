@@ -6,11 +6,13 @@ export const CustomSlide = styled(motion.div)`
   max-width: 800px;
   width: 100%;
   margin-left: 160px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-top: 40px;
   padding: 0 20px;
 
-  background-color: rgb(166, 156, 172);
+  border: 5px solid rgb(166, 156, 172);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 20px;
 
   cursor: pointer;
 `;
