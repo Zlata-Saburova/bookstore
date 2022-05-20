@@ -21,7 +21,7 @@ import {
 import darkStart from "../../assets/svg/darkStar.svg";
 import lightStart from "../../assets/svg/lightStart.svg";
 import details from "../../assets/svg/details.svg";
-import { ReactNode, useId, useState } from "react";
+import { ReactNode, useEffect, useId, useState } from "react";
 import { Link, Element } from "react-scroll";
 
 interface IProps {
@@ -29,6 +29,10 @@ interface IProps {
 }
 
 export const Book = ({ book }: IProps) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const id = useId();
 
   const drawRating = (rating: string): ReactNode[] => {
@@ -59,6 +63,16 @@ export const Book = ({ book }: IProps) => {
   console.log(filteredKeys);
 
   const newArr = Object.assign(book);
+
+  const [active, setActive] = useState("desc");
+
+  const handleTab = () => {
+    if (active === "desc") {
+      setActive("ath");
+    } else {
+      setActive("desc");
+    }
+  };
 
   return (
     <>
@@ -96,9 +110,12 @@ export const Book = ({ book }: IProps) => {
       </Container>
       <div>
         <TabsContainer>
-          <Tab>Description</Tab>
-          <Tab>Authors</Tab>
-          <Tab>Reviews</Tab>
+          <Tab onClick={handleTab} active={active}>
+            Description
+          </Tab>
+          <Tab onClick={handleTab} active={active}>
+            Authors
+          </Tab>
         </TabsContainer>
         <TabInfo>{book.desc}</TabInfo>
       </div>
