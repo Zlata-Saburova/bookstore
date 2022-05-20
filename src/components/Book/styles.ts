@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { typography } from "../../ui/typography";
 
+interface IProps {
+  active: string;
+}
+
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -119,14 +123,12 @@ export const TabsContainer = styled.div`
   border-bottom: 1px solid rgb(231, 231, 231);
 `;
 
-export const Tab = styled.button`
+export const Tab = styled.button<IProps>`
   padding-bottom: 24px;
   padding-left: 40px;
   padding-right: 40px;
 
   ${typography.tab}
-
-  border-bottom: 1px solid rgb(13, 12, 29);
 
   cursor: pointer;
 `;
