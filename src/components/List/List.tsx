@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { INewBookApi } from "../../services/types";
 import { ListItem } from "../ListItem/ListItem";
 import { StyledList } from "./styles";
@@ -8,6 +8,10 @@ interface IProps {
 }
 
 export const List = ({ books }: IProps) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <StyledList>
       {books.map((book) => (
