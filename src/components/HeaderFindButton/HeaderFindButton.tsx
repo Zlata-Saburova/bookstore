@@ -1,5 +1,10 @@
-import { StyledHeaderFindButton } from "./styles";
+import { Search } from "../../assets/icons";
+import { FindButtonContainer } from "./styles";
 
 export const HeaderFindButton = () => {
-  return <StyledHeaderFindButton />;
+  return (
+    <FindButtonContainer>
+      <Search />
+    </FindButtonContainer>
+  );
 };

@@ -12,10 +12,8 @@ const StyledHeader = styled.div`
   border-bottom: 1px rgb(231, 231, 231) solid;
 `;
 
-const Logo = styled.img`
-  display: block;
-
+const LogoContainer = styled.div`
   cursor: pointer;
 `;
 
-export { StyledHeader, Logo };
+export { StyledHeader, LogoContainer };

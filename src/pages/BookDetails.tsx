@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Book } from "../components/Book/Book";
-import { BackButton } from "../components/BackButton/BackButton";
 import { Title } from "../components/Title/Title";
 import { bookApi } from "../services/bookService";
 import { IBookDetailsApi } from "../services/types";
+import { BackButton } from "../components/BackButton/BackButton";
 
 export const BookDetails = () => {
   const { id = "" } = useParams();

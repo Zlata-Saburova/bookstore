@@ -1,10 +1,14 @@
-import { StyledBackButton } from "./styles";
-import back from "../../assets/svg/back.svg";
+import { Back } from "../../assets/icons";
+import { BackButtonContainer } from "./styles";
 
 interface IProps {
   onClick: () => void;
 }
 
 export const BackButton = ({ onClick }: IProps) => {
-  return <StyledBackButton onClick={onClick} src={back} alt="back" />;
+  return (
+    <BackButtonContainer onClick={onClick}>
+      <Back />
+    </BackButtonContainer>
+  );
 };

@@ -1,20 +1,24 @@
 import { Link } from "react-router-dom";
-import likes from "../../assets/svg/likes.svg";
-import cart from "../../assets/svg/cart.svg";
-import account from "../../assets/svg/account.svg";
 import { StyledIcon, StyledNav } from "./styles";
+import { Account, Cart, Likes } from "../../assets/icons";
 
 export const Nav = () => {
   return (
     <StyledNav>
       <Link to="">
-        <StyledIcon src={likes} alt="likes" />
+        <StyledIcon>
+          <Likes />
+        </StyledIcon>
       </Link>
       <Link to="">
-        <StyledIcon src={cart} alt="cart" />
+        <StyledIcon>
+          <Cart />
+        </StyledIcon>
       </Link>
       <Link to="">
-        <StyledIcon src={account} alt="accaunt" />
+        <StyledIcon>
+          <Account />
+        </StyledIcon>
       </Link>
     </StyledNav>
   );

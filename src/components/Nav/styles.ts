@@ -8,7 +8,7 @@ const StyledNav = styled.nav`
   width: 100%;
 `;
 
-const StyledIcon = styled.img`
+const StyledIcon = styled.div`
   width: 24px;
   height: 24px;
 `;
