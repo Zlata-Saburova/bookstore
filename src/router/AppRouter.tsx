@@ -4,15 +4,16 @@ import { BookDetails } from "../pages/BookDetails";
 import { Home } from "../pages/Home";
 import { NewBooks } from "../pages/NewBooks";
 import { Search } from "../pages/Search";
+import { routes } from "../routes/routes";
 
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/bookstore" element={<MainTemplate />}>
-        <Route path="/bookstore" element={<Home />} />
-        <Route path="/bookstore/new" element={<NewBooks />} />
-        <Route path="search" element={<Search />} />
-        <Route path="/bookstore/books/:id" element={<BookDetails />} />
+      <Route path={routes.HOME} element={<MainTemplate />}>
+        <Route path={routes.HOME} element={<Home />} />
+        <Route path={routes.NEW} element={<NewBooks />} />
+        <Route path={routes.SEARCH} element={<Search />} />
+        <Route path={routes.DETAILS} element={<BookDetails />} />
       </Route>
     </Routes>
   );
