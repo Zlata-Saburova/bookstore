@@ -39,7 +39,7 @@ const subtitle = css`
   color: rgb(49, 48, 55);
 `;
 
-const bodytext = css`
+const body = css`
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -84,7 +84,7 @@ export const typography = {
   H2,
   H3,
   subtitle,
-  bodytext,
+  body,
   button,
   input,
   link,
