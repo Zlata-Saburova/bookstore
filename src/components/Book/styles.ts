@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { typography } from "../../ui/typography";
 
 interface IProps {
-  active: string;
+  isActive: boolean;
 }
 
 export const Container = styled.div`
@@ -13,6 +13,7 @@ export const Container = styled.div`
 `;
 
 export const ImgContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
 
@@ -20,6 +21,24 @@ export const ImgContainer = styled.div`
   width: 100%;
 
   background-color: rgb(241, 218, 196);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+`;
+
+export const LikeContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 56px;
+  width: 100%;
+  height: 56px;
+
+  background-color: rgb(13, 12, 29);
+
+  cursor: pointer;
 `;
 
 export const InfoContainer = styled.div`
@@ -81,6 +100,7 @@ export const Property = styled.p`
 
 export const Button = styled.button`
   margin-bottom: 40px;
+  margin-right: 8px;
 
   font-weight: 400;
   font-size: 16px;
@@ -110,6 +130,7 @@ export const CartButton = styled.button`
   display: block;
 
   padding: 16px 140px;
+  margin-bottom: 40px;
 
   ${typography.button}
   background-color: rgb(13, 12, 29);
@@ -130,10 +151,38 @@ export const Tab = styled.button<IProps>`
 
   ${typography.tab}
 
+  border-bottom: ${({ isActive }) =>
+    isActive ? "1px solid rgb(13, 12, 29)" : ""};
+
   cursor: pointer;
 `;
 
 export const TabInfo = styled.div`
   margin-top: 48px;
   margin-bottom: 48px;
+  height: 60px;
+`;
+
+export const SocialsLink = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: left;
+
+  margin-bottom: 72px;
+`;
+
+export const Social = styled.div`
+  max-width: 24px;
+  width: 100%;
+  height: 24px;
+  margin-right: 24px;
+
+  cursor: pointer;
+`;
+
+export const Preview = styled.a`
+  display: flex;
+  justify-content: center;
+
+  ${typography.link}
 `;

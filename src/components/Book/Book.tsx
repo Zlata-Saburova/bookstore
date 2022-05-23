@@ -9,20 +9,29 @@ import {
   ImgContainer,
   InfoContainer,
   InfoDetails,
+  Preview,
   Property,
   PropertyList,
   PropertyTitle,
   RateContainer,
+  Social,
+  SocialsLink,
   StyledLI,
+  LikeContainer,
   Tab,
   TabInfo,
   TabsContainer,
 } from "./styles";
-import darkStart from "../../assets/svg/darkStar.svg";
-import lightStart from "../../assets/svg/lightStart.svg";
-import details from "../../assets/svg/details.svg";
 import { ReactNode, useEffect, useId, useState } from "react";
 import { Link, Element } from "react-scroll";
+import {
+  Twitter,
+  DarkStar,
+  Details,
+  Facebook,
+  LightStar,
+  Likes,
+} from "../../assets/icons";
 
 interface IProps {
   book: IBookDetailsApi;
@@ -39,11 +48,9 @@ export const Book = ({ book }: IProps) => {
     const stars = [];
     for (let i = 0; i <= 4; i++) {
       if (i < +rating) {
-        stars.push(<img src={darkStart} alt="dark" key={`${id}+${i * 33}`} />);
+        stars.push(<DarkStar key={`${id}+${i * 33}`} />);
       } else {
-        stars.push(
-          <img src={lightStart} alt="light" key={`${id}+${i * 55}`} />
-        );
+        stars.push(<LightStar key={`${id}+${i * 55}`} />);
       }
     }
     return stars;
@@ -60,7 +67,6 @@ export const Book = ({ book }: IProps) => {
     "url",
   ];
   const filteredKeys = keys.filter((el) => !forbidenKeys.includes(el));
-  console.log(filteredKeys);
 
   const newArr = Object.assign(book);
 
@@ -68,17 +74,22 @@ export const Book = ({ book }: IProps) => {
 
   const handleTab = () => {
     if (active === "desc") {
-      setActive("ath");
-    } else {
+      setActive("authors");
+    } else { 
       setActive("desc");
     }
   };
+
+  const chapters = book.pdf ? Object.values(book.pdf) : [];
 
   return (
     <>
       <Container>
         <ImgContainer>
           <img src={book.image} alt={book.title} />
+          <LikeContainer>
+            <Likes />
+          </LikeContainer>
         </ImgContainer>
         <InfoContainer>
           <RateContainer>
@@ -88,7 +99,7 @@ export const Book = ({ book }: IProps) => {
             <div>{drawRating(`${book.rating}`)}</div>
           </RateContainer>
           <PropertyList>
-            {filteredKeys.slice(0, 3).map((property, index) => {
+            {filteredKeys.slice(1, 4).map((property, index) => {
               if (newArr[property]) {
                 return (
                   <StyledLI key={`${id}-${index}`}>
@@ -102,23 +113,33 @@ export const Book = ({ book }: IProps) => {
           <Button>
             <Link to="details" duration={500} smooth={true}>
               More detailse
-              <img src={details} alt="arrow" />
             </Link>
           </Button>
+          <Details />
           <CartButton>add to cart</CartButton>
+          {chapters.map((chapter) => (
+            <Preview href={chapter}>Preview book</Preview>
+          ))}
         </InfoContainer>
       </Container>
-      <div>
-        <TabsContainer>
-          <Tab onClick={handleTab} active={active}>
-            Description
-          </Tab>
-          <Tab onClick={handleTab} active={active}>
-            Authors
-          </Tab>
-        </TabsContainer>
-        <TabInfo>{book.desc}</TabInfo>
-      </div>
+
+      <TabsContainer>
+        <Tab onClick={handleTab} isActive={active === "desc"}>
+          Description
+        </Tab>
+        <Tab onClick={handleTab} isActive={active === "authors"}>
+          Authors
+        </Tab>
+      </TabsContainer>
+      <TabInfo>{newArr[active]}</TabInfo>
+      <SocialsLink>
+        <Social>
+          <Facebook />
+        </Social>
+        <Social>
+          <Twitter />
+        </Social>
+      </SocialsLink>
       <Element name="details">
         <InfoDetails>
           {filteredKeys.map((property, index) => {
