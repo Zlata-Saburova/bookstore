@@ -19,6 +19,10 @@ button {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 input {
   border: none;
   &:focus {
