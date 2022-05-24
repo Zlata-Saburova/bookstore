@@ -1,6 +1,6 @@
 export enum routes {
   HOME = "/bookstore",
   NEW = "/bookstore/new",
-  SEARCH = "/bookstore/search",
+  SEARCHRESULTS = "/bookstore/search/:title/:page",
   DETAILS = "/bookstore/books/:id",
 }
