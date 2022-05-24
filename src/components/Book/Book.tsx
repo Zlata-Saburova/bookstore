@@ -75,7 +75,7 @@ export const Book = ({ book }: IProps) => {
   const handleTab = () => {
     if (active === "desc") {
       setActive("authors");
-    } else { 
+    } else {
       setActive("desc");
     }
   };
