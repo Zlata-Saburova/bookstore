@@ -17,9 +17,9 @@ export const SearchResults = () => {
     });
   }, [title, page]);
   return (
-    <div>
+    <>
       <Title>Search results for: {title}</Title>
       <List books={searchResult?.books ? searchResult?.books : []}></List>
-    </div>
+    </>
   );
 };
