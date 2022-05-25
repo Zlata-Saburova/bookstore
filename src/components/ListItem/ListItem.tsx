@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { INewBookApi } from "../../services/types";
 import {
   StyledBookSubtitle,
   StyledBookTitle,
+  StyledLink,
   StyledListItem,
   StyledPrice,
 } from "./styles";
@@ -26,7 +25,3 @@ export const ListItem = ({ book }: IProps) => {
     </StyledListItem>
   );
 };
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;

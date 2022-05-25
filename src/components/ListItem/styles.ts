@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { typography } from "../../ui/typography";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const StyledListItem = styled(motion.li)`
   display: flex;
@@ -42,4 +43,14 @@ const StyledPrice = styled.h3`
   ${typography.H3}
 `;
 
-export { StyledListItem, StyledBookTitle, StyledBookSubtitle, StyledPrice };
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
+export {
+  StyledListItem,
+  StyledBookTitle,
+  StyledBookSubtitle,
+  StyledPrice,
+  StyledLink,
+};
