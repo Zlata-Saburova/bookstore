@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { ChangeEvent, useEffect, useState } from "react";
 import { bookApi } from "../../services/bookService";
 import { ISearchBooksApi } from "../../services/types";
+import OutsideClickHandler from "react-outside-click-handler";
 
 export const HeaderForm = () => {
   const { register, handleSubmit } = useForm();
@@ -51,28 +52,34 @@ export const HeaderForm = () => {
       <FindButton type="submit">
         <Search />
       </FindButton>
-      {title.length > 0 && (
-        <ResultsBlock>
-          <Container>
-            <>
-              {searchResult?.books.map((book) => {
-                return (
-                  <StyledLink
-                    to={`/bookstore/books/${book.isbn13}`}
-                    onClick={() => setTitle("")}
-                  >
-                    <ResultLI>
-                      <Img src={book.image} alt={book.title} />
-                      <ResultTitle>{book.title}</ResultTitle>
-                    </ResultLI>
-                  </StyledLink>
-                );
-              })}
-            </>
-          </Container>
-          <ResultButton>all results</ResultButton>
-        </ResultsBlock>
-      )}
+      <OutsideClickHandler
+        onOutsideClick={() => {
+          setTitle("");
+        }}
+      >
+        {title.length > 0 && (
+          <ResultsBlock>
+            <Container>
+              <>
+                {searchResult?.books.map((book) => {
+                  return (
+                    <StyledLink
+                      to={`/bookstore/books/${book.isbn13}`}
+                      onClick={() => setTitle("")}
+                    >
+                      <ResultLI>
+                        <Img src={book.image} alt={book.title} />
+                        <ResultTitle>{book.title}</ResultTitle>
+                      </ResultLI>
+                    </StyledLink>
+                  );
+                })}
+              </>
+            </Container>
+            <ResultButton>all results</ResultButton>
+          </ResultsBlock>
+        )}{" "}
+      </OutsideClickHandler>
     </StyledHeaderForm>
   );
 };
