@@ -34,7 +34,6 @@ export const HeaderForm = () => {
   useEffect(() => {
     bookApi.getBooksBySearch(title, "1").then((books) => {
       setSearchResult(books);
-      console.log(books);
     });
   }, [title]);
 
