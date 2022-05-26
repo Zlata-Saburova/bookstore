@@ -1,6 +1,5 @@
 import Slider from "react-slick";
 import { INewBookApi } from "../../services/types";
-import { Title } from "../Title/Title";
 import {
   SlideContainer,
   CustomSlide,
@@ -25,7 +24,6 @@ export const BookSlider = ({ books }: IProps) => {
 
   return (
     <div>
-      <Title>Don't miss our new books</Title>
       <Slider {...settings}>
         {books.slice(0, 3).map((book) => {
           return (
