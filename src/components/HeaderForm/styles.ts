@@ -38,8 +38,6 @@ export const ResultsBlock = styled.ul`
   top: 100%;
   z-index: 3;
 
-  height: 400px;
-  overflow: auto;
   width: 100%;
   border: 1px solid rgb(231, 231, 231);
   background-color: white;
@@ -47,6 +45,10 @@ export const ResultsBlock = styled.ul`
 
 export const Container = styled.div`
   position: relative;
+  height: 400px;
+  overflow: auto;
+
+  padding-bottom: 59px;
 `;
 
 export const ResultLI = styled.li`
@@ -75,10 +77,11 @@ export const Img = styled.img`
 
 export const ResultButton = styled.button`
   position: absolute;
-  top: 100%;
+  bottom: 0;
   width: 100%;
   padding-top: 17px;
   padding-bottom: 17px;
+  z-index: 2;
 
   font-weight: 400;
   font-size: 16px;

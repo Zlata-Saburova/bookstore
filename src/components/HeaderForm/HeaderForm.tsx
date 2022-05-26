@@ -69,8 +69,8 @@ export const HeaderForm = () => {
                 );
               })}
             </>
-            <ResultButton>all results</ResultButton>
           </Container>
+          <ResultButton>all results</ResultButton>
         </ResultsBlock>
       )}
     </StyledHeaderForm>
