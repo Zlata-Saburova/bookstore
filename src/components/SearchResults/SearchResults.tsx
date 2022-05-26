@@ -13,7 +13,6 @@ export const SearchResults = () => {
   useEffect(() => {
     bookApi.getBooksBySearch(title, page).then((books) => {
       setSearchResult(books);
-      console.log(books);
     });
   }, [title, page]);
   return (
