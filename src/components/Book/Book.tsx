@@ -73,12 +73,8 @@ export const Book = ({ book }: IProps) => {
 
   const [active, setActive] = useState("desc");
 
-  const handleTab = () => {
-    if (active === "desc") {
-      setActive("authors");
-    } else {
-      setActive("desc");
-    }
+  const handleTab = (activeId: string) => {
+    setActive(activeId);
   };
 
   const chapters = book.pdf ? Object.values(book.pdf) : [];
@@ -125,10 +121,13 @@ export const Book = ({ book }: IProps) => {
       </Container>
 
       <TabsContainer>
-        <Tab onClick={handleTab} isActive={active === "desc"}>
+        <Tab onClick={() => handleTab("desc")} isActive={active === "desc"}>
           Description
         </Tab>
-        <Tab onClick={handleTab} isActive={active === "authors"}>
+        <Tab
+          onClick={() => handleTab("authors")}
+          isActive={active === "authors"}
+        >
           Authors
         </Tab>
       </TabsContainer>
