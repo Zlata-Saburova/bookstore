@@ -32,6 +32,7 @@ import {
   LightStar,
   Likes,
 } from "../../assets/icons";
+import { InfoBox } from "../InfoBox/InfoBox";
 
 interface IProps {
   book: IBookDetailsApi;
@@ -154,6 +155,7 @@ export const Book = ({ book }: IProps) => {
           })}
         </InfoDetails>
       </Element>
+      <InfoBox />
     </>
   );
 };
