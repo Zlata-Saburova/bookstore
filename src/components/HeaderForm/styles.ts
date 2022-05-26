@@ -60,6 +60,16 @@ export const ResultLI = styled.li`
   width: 100%;
 
   border-bottom: 1px solid rgb(231, 231, 231);
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgb(166, 156, 172);
+  }
+
+  &:active {
+    background-color: rgb(71, 73, 115);
+  }
 `;
 
 export const StyledLink = styled(Link)`
