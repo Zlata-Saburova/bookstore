@@ -104,3 +104,22 @@ export const Tab = styled.div<IProps>`
 export const LastInput = styled(Input)`
   margin-bottom: 40px;
 `;
+
+export const ErrorMassage = styled.div`
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  text-align: center;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: rgb(255, 0, 0);
+
+  background-color: rgb(241, 218, 196);
+`;
+
+export const Notification = styled(ErrorMassage)`
+  color: rgb(0, 0, 0);
+`;
