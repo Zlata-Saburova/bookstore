@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { StyledIcon, StyledNav } from "./styles";
-import { Account, Cart, Likes } from "../../assets/icons";
+import { AccountSVG, CartSvg, Likes } from "../../assets/icons";
 import { routes } from "../../routes/routes";
 
 export const Nav = () => {
@@ -11,14 +11,14 @@ export const Nav = () => {
           <Likes />
         </StyledIcon>
       </Link>
-      <Link to="">
+      <Link to={routes.CART}>
         <StyledIcon>
-          <Cart />
+          <CartSvg />
         </StyledIcon>
       </Link>
-      <Link to="">
+      <Link to={routes.ACCOUNT}>
         <StyledIcon>
-          <Account />
+          <AccountSVG />
         </StyledIcon>
       </Link>
     </StyledNav>
