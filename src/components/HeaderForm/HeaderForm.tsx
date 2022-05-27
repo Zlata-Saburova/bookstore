@@ -63,6 +63,7 @@ export const HeaderForm = () => {
                 {searchResult?.books.map((book) => {
                   return (
                     <StyledLink
+                      key={book.isbn13}
                       to={`/bookstore/books/${book.isbn13}`}
                       onClick={() => setTitle("")}
                     >
@@ -77,7 +78,7 @@ export const HeaderForm = () => {
             </Container>
             <ResultButton>all results</ResultButton>
           </ResultsBlock>
-        )}{" "}
+        )}
       </OutsideClickHandler>
     </StyledHeaderForm>
   );
