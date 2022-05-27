@@ -1,6 +1,9 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 import {
   Button,
   Container,
@@ -13,15 +16,45 @@ import {
   Tabs,
   Text,
   LastInput,
+  ErrorMassage,
+  Notification,
 } from "./styles";
+import { useDispatch, useSelector } from "react-redux";
+import { routes } from "../../routes/routes";
+import { setUser } from "../../store/slices/userReducer";
+import { RootStore } from "../../store/store";
 
 export const LogInForm = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isSignInError, setIsSignInError] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
+  const { isAuth } = useSelector(({ user }: RootStore) => user);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    navigate(-1);
+  const onSubmit = (data: any) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        setIsSignUp(true);
+      })
+      .catch(console.error);
+    navigate(routes.SIGN_IN);
+  };
+
+  const onSignIn = (data: any) => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        navigate(routes.ACCOUNT);
+        dispatch(setUser(userCredential.user.email));
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        setIsSignInError(true);
+      });
   };
 
   const [active, setActive] = useState("login");
@@ -29,8 +62,6 @@ export const LogInForm = () => {
   const handleTab = (activeId: string) => {
     setActive(activeId);
   };
-
-  console.log(active);
 
   return (
     <Container>
@@ -48,7 +79,20 @@ export const LogInForm = () => {
         </Tabs>
 
         {active === "login" ? (
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={handleSubmit(onSignIn)}>
+            {isAuth ? (
+              ""
+            ) : (
+              <Notification>You need to register or login first.</Notification>
+            )}
+            {isSignInError ? (
+              <ErrorMassage>
+                Incorrect email or password. Enter your sign in information
+                again, or register.
+              </ErrorMassage>
+            ) : (
+              ""
+            )}
             <label>
               <Lable>Email</Lable>
               <Input placeholder="Your email" {...register("email")} />
@@ -56,31 +100,57 @@ export const LogInForm = () => {
             <label>
               <Lable>Password</Lable>
               <PasswordInput
+                type="password"
                 placeholder="Your password"
                 {...register("password")}
               />
             </label>
             <Text>Forgot password ?</Text>
+
             <Button type="submit">sign in</Button>
           </Form>
         ) : (
-          <Form>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <label>
               <Lable>Name</Lable>
-              <Input placeholder="Your name" />
+              <Input
+                type="text"
+                placeholder="Your name"
+                {...register("name")}
+              />
             </label>
             <label>
               <Lable>Email</Lable>
-              <Input placeholder="Your email" />
+              <Input
+                type="email"
+                placeholder="Your email"
+                {...register("email")}
+              />
             </label>
             <label>
               <Lable>Password</Lable>
-              <Input placeholder="Your password" />
+              <Input
+                type="password"
+                placeholder="Your password"
+                {...register("password")}
+              />
             </label>
             <label>
               <Lable>Confirm password</Lable>
-              <LastInput placeholder="Confirm password" />
+              <LastInput
+                type="password"
+                placeholder="Confirm password"
+                {...register("ConfirmPassword")}
+              />
             </label>
+            {isSignUp ? (
+              <Notification>
+                You have successfully registered, now go to the sign in tab and
+                enter your details.
+              </Notification>
+            ) : (
+              ""
+            )}
             <Button type="submit">sign UP</Button>
           </Form>
         )}
