@@ -4,7 +4,8 @@ export enum routes {
   SEARCHRESULTS = "/bookstore/search/:title/:page",
   DETAILS = "/bookstore/books/:id",
   SIGN_IN = "/bookstore/sign-in",
-  SIGN_UP = "/bookstore/sign-up",
   NOT_FOUND = "*",
   FAVORITES = "/bookstore/favorites",
+  CART = "/bookstore/cart",
+  ACCOUNT = "/bookstore/account",
 }
