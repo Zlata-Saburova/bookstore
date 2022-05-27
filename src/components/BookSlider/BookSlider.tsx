@@ -27,12 +27,14 @@ export const BookSlider = ({ books }: IProps) => {
       <Slider {...settings}>
         {books.slice(0, 3).map((book) => {
           return (
-            <CustomSlide whileHover={{ scale: 1.05 }}>
+            <CustomSlide key={book.isbn13} whileHover={{ scale: 1.05 }}>
               <SlideContainer>
                 <img src={book.image} alt={book.title} />
                 <div>
                   <SliderTitle>{book.title}</SliderTitle>
-                  <SliderPrice>{book.price}</SliderPrice>
+                  <SliderPrice>
+                    {book.price === "$0.00" ? "Free" : book.price}
+                  </SliderPrice>
                 </div>
               </SlideContainer>
             </CustomSlide>
