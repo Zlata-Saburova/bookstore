@@ -13,6 +13,11 @@ const StyledListItem = styled(motion.li)`
   padding: 0 16px;
 
   cursor: pointer;
+
+  transition: all 0.3s;
+  &:hover {
+    border: 5px solid rgb(71, 73, 115);
+  }
 `;
 
 const StyledBookTitle = styled.h3`
