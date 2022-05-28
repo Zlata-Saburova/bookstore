@@ -9,6 +9,8 @@ import { ReactComponent as Likes } from "./likes.svg";
 import { ReactComponent as Logo } from "./logo.svg";
 import { ReactComponent as Search } from "./search.svg";
 import { ReactComponent as Twitter } from "./twitter.svg";
+import { ReactComponent as Prev } from "./prev.svg";
+import { ReactComponent as Next } from "./next.svg";
 
 export {
   AccountSVG,
@@ -22,4 +24,6 @@ export {
   Logo,
   Search,
   Twitter,
+  Prev,
+  Next,
 };
