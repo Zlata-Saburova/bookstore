@@ -1,13 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-interface IUserStore {
-  isAuth: boolean;
-  email: string | null;
-}
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IBook, IUserStore } from "../types";
 
 const initialState: IUserStore = {
   isAuth: false,
-  email: null,
+  email: undefined,
+  name: undefined,
+  favorites: [],
 };
 
 const userSlice = createSlice({
@@ -18,12 +16,19 @@ const userSlice = createSlice({
       state.isAuth = true;
       state.email = action.payload;
     },
+    setUserName: (state, action) => {
+      state.name = action.payload;
+    },
     unsetUser: (state) => {
       state.isAuth = false;
-      state.email = null;
+      state.email = undefined;
+    },
+    addFavorite: (state, { payload }: PayloadAction<IBook>) => {
+      state.favorites.push(payload);
     },
   },
 });
 
-export const { setUser, unsetUser } = userSlice.actions;
+export const { setUser, unsetUser, setUserName, addFavorite } =
+  userSlice.actions;
 export default userSlice.reducer;
