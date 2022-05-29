@@ -24,7 +24,7 @@ export const ImgContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
-export const LikeContainer = styled.div`
+export const LikeContainer = styled.button`
   position: absolute;
   top: 0;
   right: 0;

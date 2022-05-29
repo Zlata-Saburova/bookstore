@@ -33,6 +33,9 @@ import {
   Likes,
 } from "../../assets/icons";
 import { InfoBox } from "../InfoBox/InfoBox";
+import { useAppDispatch } from "../../store/hooks/hooks";
+import { IBook } from "../../store/types";
+import { addFavorite } from "../../store/slices/userReducer";
 
 interface IProps {
   book: IBookDetailsApi;
@@ -44,6 +47,7 @@ export const Book = ({ book }: IProps) => {
   }, []);
 
   const id = useId();
+  const dispatch = useAppDispatch();
 
   const drawRating = (rating: string): ReactNode[] => {
     const stars = [];
@@ -79,12 +83,16 @@ export const Book = ({ book }: IProps) => {
 
   const chapters = book.pdf ? Object.values(book.pdf) : [];
 
+  const handleFavorite = (book: IBook) => {
+    dispatch(addFavorite(book));
+  };
+
   return (
     <>
       <Container>
         <ImgContainer>
           <img src={book.image} alt={book.title} />
-          <LikeContainer>
+          <LikeContainer onClick={() => handleFavorite(book)}>
             <Likes />
           </LikeContainer>
         </ImgContainer>
