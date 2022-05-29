@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { typography } from "../../ui/typography";
 
 export const CustomSlide = styled(motion.div)`
-  max-width: 800px;
+  display: block;
+  max-width: 500px;
   width: 100%;
-  margin-left: 160px;
+  margin: 0 auto;
   margin-bottom: 40px;
   margin-top: 40px;
   padding: 0 20px;
