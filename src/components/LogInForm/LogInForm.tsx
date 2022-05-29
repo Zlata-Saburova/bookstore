@@ -21,24 +21,31 @@ import {
 } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { routes } from "../../routes/routes";
-import { setUser } from "../../store/slices/userReducer";
-import { RootStore } from "../../store/store";
+import { setUser, setUserName } from "../../store/slices/userReducer";
+import { RootState } from "../../store/store";
 
 export const LogInForm = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignInError, setIsSignInError] = useState(false);
+  const [isSignUpError, setIsSignUpError] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
-  const { isAuth } = useSelector(({ user }: RootStore) => user);
+  const { isAuth } = useSelector(({ user }: RootState) => user);
 
   const onSubmit = (data: any) => {
+    console.log(data);
+
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         setIsSignUp(true);
       })
-      .catch(console.error);
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        setIsSignUpError(true);
+      });
     navigate(routes.SIGN_IN);
   };
 
@@ -49,6 +56,7 @@ export const LogInForm = () => {
         console.log(userCredential);
         navigate(routes.ACCOUNT);
         dispatch(setUser(userCredential.user.email));
+        dispatch(setUserName(data.name));
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -85,14 +93,14 @@ export const LogInForm = () => {
             ) : (
               <Notification>You need to register or login first.</Notification>
             )}
-            {isSignInError ? (
-              <ErrorMassage>
-                Incorrect email or password. Enter your sign in information
-                again, or register.
-              </ErrorMassage>
-            ) : (
-              ""
-            )}
+            <label>
+              <Lable>Name</Lable>
+              <Input
+                type="text"
+                placeholder="Your name"
+                {...register("name")}
+              />
+            </label>
             <label>
               <Lable>Email</Lable>
               <Input placeholder="Your email" {...register("email")} />
@@ -106,7 +114,14 @@ export const LogInForm = () => {
               />
             </label>
             <Text>Forgot password ?</Text>
-
+            {isSignInError ? (
+              <ErrorMassage>
+                Incorrect email or password. Enter your sign in information
+                again, or register.
+              </ErrorMassage>
+            ) : (
+              ""
+            )}
             <Button type="submit">sign in</Button>
           </Form>
         ) : (
@@ -148,6 +163,13 @@ export const LogInForm = () => {
                 You have successfully registered, now go to the sign in tab and
                 enter your details.
               </Notification>
+            ) : (
+              ""
+            )}
+            {isSignUpError ? (
+              <ErrorMassage>
+                Some of the fields are not filled, please try again.
+              </ErrorMassage>
             ) : (
               ""
             )}
