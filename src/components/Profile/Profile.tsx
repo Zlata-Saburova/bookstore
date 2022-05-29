@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../store/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
 import { getUserInfo } from "../../store/selectors/userSelectors";
 import { setUser, setUserName } from "../../store/slices/userReducer";
 import {
@@ -17,7 +16,7 @@ import {
 export const Profile = () => {
   const { register, handleSubmit } = useForm();
   const { name, email } = useAppSelector(getUserInfo);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isChange, setIsChange] = useState(false);
 
   const onSubmit = (data: any) => {
