@@ -1,13 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { Back } from "../../assets/icons";
 import { BackButtonContainer } from "./styles";
 
-interface IProps {
-  onClick: () => void;
-}
+export const BackButton = () => {
+  const navigate = useNavigate();
 
-export const BackButton = ({ onClick }: IProps) => {
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
-    <BackButtonContainer onClick={onClick}>
+    <BackButtonContainer onClick={handleBack}>
       <Back />
     </BackButtonContainer>
   );
