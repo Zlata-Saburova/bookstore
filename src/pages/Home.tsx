@@ -4,26 +4,22 @@ import styled from "styled-components";
 import { BookSlider } from "../components/BookSlider/BookSlider";
 import { InfoBox } from "../components/InfoBox/InfoBox";
 import { Title } from "../components/Title/Title";
-import { bookApi } from "../services/bookService";
-import { INewBooksApi } from "../services/types";
 
 export const Home = () => {
-  const [newBooks, setNewBooks] = useState<INewBooksApi>({
-    books: [],
-    error: "",
-    total: "",
-  });
-
-  useEffect(() => {
-    bookApi.getNewBooks().then((books) => {
-      setNewBooks(books);
-    });
-  }, []);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    centerMode: true,
+    className: "center",
+  };
   return (
     <>
       <Title>Don't miss our new books</Title>
       <NewLink to="/bookstore/new">
-        <BookSlider books={newBooks.books} />
+        <BookSlider settings={settings} />
       </NewLink>
       <InfoBox />
     </>
