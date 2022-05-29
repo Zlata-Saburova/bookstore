@@ -26,11 +26,6 @@ export const BookDetails = () => {
     url: "",
     year: "",
   });
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    navigate(-1);
-  };
 
   useEffect(() => {
     bookApi.getBookDetails(id).then((book) => {
@@ -40,7 +35,7 @@ export const BookDetails = () => {
 
   return (
     <>
-      <BackButton onClick={handleBack} />
+      <BackButton />
       <Title>{detailsBook.title}</Title>
       <Book book={detailsBook} />
     </>
