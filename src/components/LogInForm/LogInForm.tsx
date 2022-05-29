@@ -19,15 +19,16 @@ import {
   ErrorMassage,
   Notification,
 } from "./styles";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { routes } from "../../routes/routes";
 import { setUser, setUserName } from "../../store/slices/userReducer";
 import { RootState } from "../../store/store";
+import { useAppDispatch } from "../../store/hooks/hooks";
 
 export const LogInForm = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isSignInError, setIsSignInError] = useState(false);
   const [isSignUpError, setIsSignUpError] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
