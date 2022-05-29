@@ -64,6 +64,15 @@ export const Button = styled.button`
   text-transform: uppercase;
 
   background-color: rgb(13, 12, 29);
+
+  transition: all 0.3s;
+
+  &:hover {
+    font-size: 26px;
+  }
+  &:active {
+    font-size: 24px;
+  }
 `;
 
 export const Text = styled.p`
