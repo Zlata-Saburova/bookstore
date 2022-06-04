@@ -39,6 +39,19 @@ export const LikeContainer = styled.button`
   background-color: rgb(13, 12, 29);
 
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    path {
+      stroke: rgb(252, 133, 127);
+    }
+  }
+
+  &:active {
+    path {
+      fill: rgb(252, 133, 127);
+    }
+  }
 `;
 
 export const InfoContainer = styled.div`
