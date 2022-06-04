@@ -11,6 +11,18 @@ const StyledNav = styled.nav`
 const StyledIcon = styled.div`
   width: 24px;
   height: 24px;
+
+  &:hover {
+    path {
+      stroke: rgb(166, 156, 172);
+    }
+  }
+
+  &:active {
+    path {
+      stroke: rgb(71, 73, 115);
+    }
+  }
 `;
 
 export { StyledIcon, StyledNav };

@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-import Slider from "react-slick";
+import { Link, Navigate } from "react-router-dom";
+import styled from "styled-components";
 import { BookSlider } from "../components/BookSlider/BookSlider";
-import { List } from "../components/List/List";
+import { FavoritesList } from "../components/FavoritesList/FavoritesList";
 import { Title } from "../components/Title/Title";
 import { routes } from "../routes/routes";
 import { useAppSelector } from "../store/hooks/hooks";
 import { getUserInfo } from "../store/selectors/userSelectors";
 import { RootState } from "../store/store";
+import { typography } from "../ui/typography";
 
 export const Favorites = () => {
   const { isAuth } = useSelector(({ user }: RootState) => user);
@@ -18,8 +19,8 @@ export const Favorites = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 2,
-    slidesToScroll: 2,
-    centerPadding: "60px",
+    slidesToScroll: 1,
+    centerPadding: "50px",
     centerMode: true,
   };
 
@@ -27,11 +28,18 @@ export const Favorites = () => {
     return (
       <>
         <Title>Favorites</Title>
-        <List books={favorites}></List>
-        <BookSlider settings={settings} />
+        <FavoritesList books={favorites}/>
+        <NewTitle>New books</NewTitle>
+        <Link to="/bookstore/new">
+          <BookSlider settings={settings} />
+        </Link>
       </>
     );
   }
 
   return <Navigate to={routes.SIGN_IN} />;
 };
+
+const NewTitle = styled.h2`
+  ${typography.H2}
+`;
