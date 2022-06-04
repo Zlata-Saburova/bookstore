@@ -1,3 +1,5 @@
+import { IBookDetailsApi } from "../../services/types";
+
 export interface IBook {
   title: string;
   subtitle: string;
@@ -11,5 +13,6 @@ export interface IUserStore {
   isAuth: boolean;
   email: string | undefined;
   name: string | undefined;
-  favorites: IBook[];
+  favorites: IBookDetailsApi[];
+  cart: IBookDetailsApi[];
 }
