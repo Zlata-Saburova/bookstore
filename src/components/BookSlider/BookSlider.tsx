@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { bookApi } from "../../services/bookService";
-import { INewBookApi, INewBooksApi } from "../../services/types";
+import { INewBooksApi } from "../../services/types";
 import {
   SlideContainer,
   CustomSlide,
