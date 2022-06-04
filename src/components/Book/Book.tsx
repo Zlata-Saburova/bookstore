@@ -34,8 +34,7 @@ import {
 } from "../../assets/icons";
 import { InfoBox } from "../InfoBox/InfoBox";
 import { useAppDispatch } from "../../store/hooks/hooks";
-import { IBook } from "../../store/types";
-import { addFavorite } from "../../store/slices/userReducer";
+import { addBookToCart, addFavorite } from "../../store/slices/userReducer";
 
 interface IProps {
   book: IBookDetailsApi;
@@ -83,10 +82,13 @@ export const Book = ({ book }: IProps) => {
 
   const chapters = book.pdf ? Object.values(book.pdf) : [];
 
-  const handleFavorite = (book: IBook) => {
+  const handleFavorite = (book: IBookDetailsApi) => {
     dispatch(addFavorite(book));
   };
 
+  const handleCart = (book: IBookDetailsApi) => {
+    dispatch(addBookToCart(book));
+  };
   return (
     <>
       <Container>
@@ -121,9 +123,11 @@ export const Book = ({ book }: IProps) => {
             </Link>
           </Button>
           <Details />
-          <CartButton>add to cart</CartButton>
+          <CartButton onClick={() => handleCart(book)}>add to cart</CartButton>
           {chapters.map((chapter) => (
-            <Preview href={chapter}>Preview book</Preview>
+            <Preview href={chapter} key={book.isbn13}>
+              Preview book
+            </Preview>
           ))}
         </InfoContainer>
       </Container>
