@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { List } from "../components/List/List";
-// import { bookApi } from "../services/bookService";
-// import { INewBooksApi } from "../services/types";
 import { Title } from "../components/Title/Title";
 import { InfoBox } from "../components/InfoBox/InfoBox";
-import { useSelector } from "react-redux";
 import { getBooks } from "../store/selectors/booksSelectors";
+import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
+import { fetchBooks } from "../store/slices/booksSlice";
 
 export const NewBooks = () => {
-  // const [newBooks, setNewBooks] = useState<INewBooksApi>({
-  //   books: [],
-  //   error: "",
-  //   total: "",
-  // });
+  const { books } = useAppSelector(getBooks);
 
-  const books = useSelector(getBooks);
+  const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   bookApi.getNewBooks().then((books) => {
-  //     setNewBooks(books);
-  //   });
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
 
   return (
     <>

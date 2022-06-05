@@ -1,43 +1,29 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Book } from "../components/Book/Book";
 import { Title } from "../components/Title/Title";
-import { bookApi } from "../services/bookService";
-import { IBookDetailsApi } from "../services/types";
 import { BackButton } from "../components/BackButton/BackButton";
+import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
+import { getBooks } from "../store/selectors/booksSelectors";
+import { fetchBookDetails } from "../store/slices/booksSlice";
 
 export const BookDetails = () => {
   const { id = "" } = useParams();
-  const [detailsBook, setDetailsBook] = useState<IBookDetailsApi>({
-    authors: "",
-    desc: "",
-    error: "",
-    image: "",
-    isbn10: "",
-    isbn13: "",
-    language: "",
-    pages: "",
-    pdf: {},
-    price: "",
-    publisher: "",
-    rating: "",
-    subtitle: "",
-    title: "",
-    url: "",
-    year: "",
-  });
+
+  const { result } = useAppSelector(getBooks);
+  console.log(result);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    bookApi.getBookDetails(id).then((book) => {
-      setDetailsBook(book);
-    });
-  }, [id]);
+    dispatch(fetchBookDetails(id));
+  }, [id, dispatch]);
 
   return (
     <>
       <BackButton />
-      <Title>{detailsBook.title}</Title>
-      <Book book={detailsBook} />
+      <Title>{result.title}</Title>
+      <Book book={result} />
     </>
   );
 };

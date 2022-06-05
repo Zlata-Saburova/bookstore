@@ -9,6 +9,14 @@ export interface IBook {
   url: string;
 }
 
+export interface IBookApi {
+  books: IBook[];
+  error: any;
+  status: RequestStatusType;
+  total: string;
+  result: IBookDetailsApi;
+}
+
 export interface IUserStore {
   isAuth: boolean;
   email: string | undefined;
@@ -16,3 +24,10 @@ export interface IUserStore {
   favorites: IBookDetailsApi[];
   cart: IBookDetailsApi[];
 }
+
+export interface IArguments {
+  title: string;
+  page: string;
+}
+
+export type RequestStatusType = "idle" | "success" | "loading" | "error";

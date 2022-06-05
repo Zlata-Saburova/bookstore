@@ -1,69 +1,100 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { IBook } from "../types";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { bookApi } from "../../services/bookService";
+import { IBookDetailsApi, INewBooksApi } from "../../services/types";
+import { IBookApi, IArguments } from "../types";
 
-const initialState: IBook[] = [
-  {
-    title: "Azure Pipelines Succinctly",
+const initialState: IBookApi = {
+  books: [],
+  error: null,
+  status: "idle",
+  total: "0",
+  result: {
+    authors: "",
+    desc: "",
+    error: "",
+    image: "",
+    isbn10: "",
+    isbn13: "",
+    language: "",
+    pages: "",
+    pdf: {},
+    price: "",
+    publisher: "",
+    rating: "",
     subtitle: "",
-    isbn13: "9781642002133",
-    price: "$0.00",
-    image: "https://itbook.store/img/books/9781642002133.png",
-    url: "https://itbook.store/books/9781642002133",
+    title: "",
+    url: "",
+    year: "",
   },
-  {
-    title: "Microsoft Excel Inside Out",
-    subtitle: "Office 2021 and Microsoft 365",
-    isbn13: "9780137559534",
-    price: "$42.16",
-    image: "https://itbook.store/img/books/9780137559534.png",
-    url: "https://itbook.store/books/9780137559534",
-  },
-  {
-    title: "Windows Internals, Part 2, 7th Edition",
-    subtitle: "",
-    isbn13: "9780135462409",
-    price: "$53.49",
-    image: "https://itbook.store/img/books/9780135462409.png",
-    url: "https://itbook.store/books/9780135462409",
-  },
-  {
-    title: "Microsoft Office Inside Out",
-    subtitle: "Office 2021 and Microsoft 365",
-    isbn13: "9780137564095",
-    price: "$36.93",
-    image: "https://itbook.store/img/books/9780137564095.png",
-    url: "https://itbook.store/books/9780137564095",
-  },
-  {
-    title: "Microsoft Excel Step by Step",
-    subtitle: "Office 2021 and Microsoft 365",
-    isbn13: "9780137564279",
-    price: "$30.62",
-    image: "https://itbook.store/img/books/9780137564279.png",
-    url: "https://itbook.store/books/9780137564279",
-  },
-  {
-    title: "Microsoft Excel Data Analysis and Business Modeling, 7th Edition",
-    subtitle: "Office 2021 and Microsoft 365",
-    isbn13: "9780137613663",
-    price: "$34.87",
-    image: "https://itbook.store/img/books/9780137613663.png",
-    url: "https://itbook.store/books/9780137613663",
-  },
-  {
-    title: "Intermediate Statistics with R",
-    subtitle: "",
-    isbn13: "1001651662833",
-    price: "$0.00",
-    image: "https://itbook.store/img/books/1001651662833.png",
-    url: "https://itbook.store/books/1001651662833",
-  },
-];
+};
+
+export const fetchBooks = createAsyncThunk<INewBooksApi>(
+  "books/fetchBooks",
+  async () => {
+    const newBooks = await bookApi.getNewBooks();
+    return newBooks;
+  }
+);
+
+export const fetchBookDetails = createAsyncThunk<IBookDetailsApi, string>(
+  "books/fetchBookDetails",
+  async (id) => {
+    const bookDetails = await bookApi.getBookDetails(id);
+    return bookDetails;
+  }
+);
+
+export const fetchBooksBySearch = createAsyncThunk<any, IArguments>(
+  "books/fetchBooksBySearch",
+  async ({ title, page }) => {
+    const rezultBooks = await bookApi.getBooksBySearch(title, page);
+    return rezultBooks;
+  }
+);
 
 const bookSlice = createSlice({
   name: "books",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchBooks.pending, (state, action) => {
+      state.status = "loading";
+      state.error = null;
+    });
+    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+      state.books = action.payload.books;
+      state.status = "success";
+    });
+    builder.addCase(fetchBooks.rejected, (state, action) => {
+      state.error = action.error;
+      state.status = "error";
+    });
+    builder.addCase(fetchBooksBySearch.pending, (state) => {
+      state.status = "loading";
+      state.error = null;
+    });
+    builder.addCase(fetchBooksBySearch.fulfilled, (state, action) => {
+      state.books = action.payload.books;
+      state.status = "success";
+      state.total = action.payload.total;
+    });
+    builder.addCase(fetchBooksBySearch.rejected, (state, action) => {
+      state.error = action.error;
+      state.status = "error";
+    });
+    builder.addCase(fetchBookDetails.pending, (state) => {
+      state.status = "loading";
+      state.error = null;
+    });
+    builder.addCase(fetchBookDetails.fulfilled, (state, action) => {
+      state.result = action.payload;
+      state.status = "success";
+    });
+    builder.addCase(fetchBookDetails.rejected, (state) => {
+      state.status = "loading";
+      state.error = null;
+    });
+  },
 });
 
 export default bookSlice.reducer;
