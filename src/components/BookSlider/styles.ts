@@ -4,16 +4,11 @@ import { typography } from "../../ui/typography";
 
 export const CustomSlide = styled(motion.div)`
   display: block;
-  max-width: 500px;
   width: 100%;
   margin: 0 auto;
   margin-bottom: 40px;
   margin-top: 40px;
   padding: 0 20px;
-
-  border: 5px solid rgb(166, 156, 172);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 20px;
 
   cursor: pointer;
 `;
@@ -21,6 +16,12 @@ export const SlideContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+
+  border: 5px solid rgb(166, 156, 172);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 20px;
 `;
 
 export const SliderTitle = styled.h3`

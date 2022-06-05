@@ -14,24 +14,14 @@ export const Favorites = () => {
   const { isAuth } = useSelector(({ user }: RootState) => user);
   const { favorites } = useAppSelector(getUserInfo);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    centerPadding: "50px",
-    centerMode: true,
-  };
-
   if (isAuth) {
     return (
       <>
         <Title>Favorites</Title>
-        <FavoritesList books={favorites}/>
+        <FavoritesList books={favorites} />
         <NewTitle>New books</NewTitle>
         <Link to="/bookstore/new">
-          <BookSlider settings={settings} />
+          <BookSlider />
         </Link>
       </>
     );

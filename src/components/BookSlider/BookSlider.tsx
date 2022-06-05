@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Slider from "react-slick";
-import { bookApi } from "../../services/bookService";
-import { INewBooksApi } from "../../services/types";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
+import { getBooks } from "../../store/selectors/booksSelectors";
+import { fetchBooks } from "../../store/slices/booksSlice";
 import {
   SlideContainer,
   CustomSlide,
@@ -11,36 +12,36 @@ import {
   LastSlideContainer,
 } from "./styles";
 
-interface IProps {
-  settings: {
-    dots: boolean;
-    infinite: boolean;
-    speed: number;
-    slidesToShow: number;
-    slidesToScroll: number;
-    centerMode: boolean;
-    className?: string;
-    centerPadding?: string;
-  };
-}
+export const BookSlider = () => {
+  const { books } = useAppSelector(getBooks);
 
-export const BookSlider = ({ settings }: IProps) => {
-  const [newBooks, setNewBooks] = useState<INewBooksApi>({
-    books: [],
-    error: "",
-    total: "",
-  });
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    bookApi.getNewBooks().then((books) => {
-      setNewBooks(books);
-    });
-  }, []);
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <div>
       <Slider {...settings}>
-        {newBooks.books.slice(0, 5).map((book) => {
+        {books.slice(0, 5).map((book) => {
           return (
             <CustomSlide key={book.isbn13} whileHover={{ scale: 1.03 }}>
               <SlideContainer>
