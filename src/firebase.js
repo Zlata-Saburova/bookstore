@@ -1,18 +1,12 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA71vyZ-6EtltjSC-mnFvaTuLe_Fsjk8mM",
-  authDomain: "bookstore-f8aee.firebaseapp.com",
-  projectId: "bookstore-f8aee",
-  storageBucket: "bookstore-f8aee.appspot.com",
-  messagingSenderId: "684161126673",
-  appId: "1:684161126673:web:0a11f627cb91762a83fcb0",
+  apiKey: process.env.REACT_APP_APPI_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSENDGER_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
-// Initialize Firebase
-// eslint-disable-next-line no-unused-vars
 const app = initializeApp(firebaseConfig);
