@@ -35,8 +35,6 @@ export const LogInForm = () => {
   const { isAuth } = useSelector(({ user }: RootState) => user);
 
   const onSubmit = (data: any) => {
-    console.log(data);
-
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
