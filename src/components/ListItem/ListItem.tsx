@@ -13,7 +13,9 @@ interface IProps {
 
 export const ListItem = ({ book }: IProps) => {
   return (
-    <StyledListItem whileHover={{ scale: 1.05 }}>
+    <StyledListItem
+      whileHover={{ scale: 1.05, border: "5px solid rgb(71, 73, 115)" }}
+    >
       <StyledLink to={`/bookstore/books/${book.isbn13}`}>
         <img src={book.image} alt={book.title} />
         <StyledBookTitle>{book.title}</StyledBookTitle>
