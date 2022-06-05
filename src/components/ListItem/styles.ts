@@ -6,21 +6,19 @@ import { Link } from "react-router-dom";
 const StyledListItem = styled(motion.li)`
   display: flex;
   flex-direction: column;
+
+  padding: 0 16px;
+  
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border: 5px solid rgb(166, 156, 172);
   border-radius: 20px;
 
-  padding: 0 16px;
-
   cursor: pointer;
 
   transition: all 0.3s;
-  /* &:hover {
-    border: 5px solid rgb(71, 73, 115);
-  } */
 `;
 
-const StyledBookTitle = styled.h3`
+const BookTitle = styled.h3`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -32,7 +30,7 @@ const StyledBookTitle = styled.h3`
   ${typography.H3}
 `;
 
-const StyledBookSubtitle = styled.p`
+const BookSubtitle = styled.p`
   margin-top: auto;
   margin-bottom: 40px;
 
@@ -42,7 +40,7 @@ const StyledBookSubtitle = styled.p`
   color: rgb(168, 168, 168);
 `;
 
-const StyledPrice = styled.h3`
+const Price = styled.h3`
   margin-bottom: 10px;
 
   ${typography.H3}
@@ -52,10 +50,4 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export {
-  StyledListItem,
-  StyledBookTitle,
-  StyledBookSubtitle,
-  StyledPrice,
-  StyledLink,
-};
+export { StyledListItem, BookTitle, BookSubtitle, Price, StyledLink };

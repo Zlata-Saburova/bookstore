@@ -1,10 +1,10 @@
 import { INewBookApi } from "../../services/types";
 import {
-  StyledBookSubtitle,
-  StyledBookTitle,
+  BookSubtitle,
+  BookTitle,
   StyledLink,
   StyledListItem,
-  StyledPrice,
+  Price,
 } from "./styles";
 
 interface IProps {
@@ -18,11 +18,9 @@ export const ListItem = ({ book }: IProps) => {
     >
       <StyledLink to={`/bookstore/books/${book.isbn13}`}>
         <img src={book.image} alt={book.title} />
-        <StyledBookTitle>{book.title}</StyledBookTitle>
-        <StyledBookSubtitle>{book.subtitle}</StyledBookSubtitle>
-        <StyledPrice>
-          {book.price === "$0.00" ? "Free" : book.price}
-        </StyledPrice>
+        <BookTitle>{book.title}</BookTitle>
+        <BookSubtitle>{book.subtitle}</BookSubtitle>
+        <Price>{book.price === "$0.00" ? "Free" : book.price}</Price>
       </StyledLink>
     </StyledListItem>
   );
