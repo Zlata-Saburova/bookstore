@@ -74,7 +74,7 @@ export const RateContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 `;
 
 export const PropertyList = styled.ul`
@@ -120,6 +120,12 @@ export const Button = styled.button`
   line-height: 24px;
 
   cursor: pointer;
+
+  transition: all 0.3s;
+
+  &:hover {
+    color: rgb(71, 73, 115);
+  }
 `;
 
 export const InfoDetails = styled.ul`
@@ -151,6 +157,16 @@ export const CartButton = styled.button`
   text-transform: uppercase;
 
   cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgb(71, 73, 115);
+  }
+
+  &:active {
+    background-color: rgb(22, 27, 51);
+  }
 `;
 
 export const TabsContainer = styled.div`
@@ -184,13 +200,27 @@ export const SocialsLink = styled.div`
   margin-bottom: 72px;
 `;
 
-export const Social = styled.div`
+export const Social = styled.a`
   max-width: 24px;
   width: 100%;
   height: 24px;
   margin-right: 24px;
 
   cursor: pointer;
+
+  transition: all 0.3s;
+
+  &:hover {
+    path {
+      stroke: rgb(71, 73, 115);
+    }
+  }
+
+  &:active {
+    path {
+      fill: rgb(71, 73, 115);
+    }
+  }
 `;
 
 export const Preview = styled.a`
@@ -198,4 +228,10 @@ export const Preview = styled.a`
   justify-content: center;
 
   ${typography.link}
+
+  transition: all 0.3s;
+
+  &:hover {
+    color: rgb(71, 73, 115);
+  }
 `;

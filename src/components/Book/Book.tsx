@@ -145,10 +145,10 @@ export const Book = ({ book }: IProps) => {
       </TabsContainer>
       <TabInfo>{newArr[active]}</TabInfo>
       <SocialsLink>
-        <Social>
+        <Social href="https://ru-ru.facebook.com/">
           <Facebook />
         </Social>
-        <Social>
+        <Social href="https://twitter.com/?lang=ru">
           <Twitter />
         </Social>
       </SocialsLink>
