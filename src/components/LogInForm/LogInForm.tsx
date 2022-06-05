@@ -149,14 +149,6 @@ export const LogInForm = () => {
                 {...register("password")}
               />
             </label>
-            <label>
-              <Lable>Confirm password</Lable>
-              <LastInput
-                type="password"
-                placeholder="Confirm password"
-                {...register("ConfirmPassword")}
-              />
-            </label>
             {isSignUp ? (
               <Notification>
                 You have successfully registered, now go to the sign in tab and
