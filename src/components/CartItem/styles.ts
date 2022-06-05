@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { typography } from "../../ui/typography";
 
@@ -29,4 +30,9 @@ export const Counter = styled.div`
 
 export const Btn = styled.button`
   cursor: pointer;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 `;

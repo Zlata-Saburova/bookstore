@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { IBookDetailsApi } from "../../services/types";
 import { InfoBlock } from "../FavoritesItem/styles";
-import { Btn, CartContainer, CartSubTitle, CartTitle, Counter } from "./styles";
+import {
+  Btn,
+  CartContainer,
+  CartSubTitle,
+  CartTitle,
+  Counter,
+  StyledLink,
+} from "./styles";
 
 interface IProps {
   book: IBookDetailsApi;
@@ -22,10 +29,14 @@ export const CartItem = ({ book }: IProps) => {
 
   return (
     <CartContainer>
-      <img src={book.image} alt={book.title} />
+      <StyledLink to={`/bookstore/books/${book.isbn13}`}>
+        <img src={book.image} alt={book.title} />
+      </StyledLink>
       <InfoBlock>
-        <CartTitle>{book.title}</CartTitle>
-        <CartSubTitle>{book.authors}</CartSubTitle>
+        <StyledLink to={`/bookstore/books/${book.isbn13}`}>
+          <CartTitle>{book.title}</CartTitle>
+          <CartSubTitle>{book.authors}</CartSubTitle>
+        </StyledLink>
       </InfoBlock>
       <Counter>
         <Btn onClick={handleMinus}>-</Btn>
