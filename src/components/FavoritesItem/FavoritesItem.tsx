@@ -2,14 +2,17 @@ import { ReactNode, useId } from "react";
 import { DarkStar, LightStar, Likes } from "../../assets/icons";
 import { IBookDetailsApi } from "../../services/types";
 import { useAppDispatch } from "../../store/hooks/hooks";
-import { deleteFavorite } from "../../store/slices/userReducer";
+import { addBookToCart, deleteFavorite } from "../../store/slices/userReducer";
 import { BookPrice, RateContainer } from "../Book/styles";
 import {
+  CartBtn,
   FavContainer,
   FavSubTitle,
   FavTitle,
+  Img,
   InfoBlock,
   LikeBtn,
+  StyledLink,
 } from "./styles";
 
 interface IProps {
@@ -36,16 +39,31 @@ export const FavoritesItem = ({ book }: IProps) => {
     dispatch(deleteFavorite(book));
   };
 
+  const handleCart = (book: IBookDetailsApi) => {
+    dispatch(addBookToCart(book));
+  };
+
   return (
-    <FavContainer>
-      <img src={book.image} alt={book.title} />
+    <FavContainer
+      whileHover={{ scale: 1.03, border: "5px solid rgb(71, 73, 115)" }}
+    >
+      <StyledLink to={`/bookstore/books/${book.isbn13}`}>
+        <Img src={book.image} alt={book.title} />
+      </StyledLink>
       <InfoBlock>
-        <FavTitle>{book.title}</FavTitle>
-        <FavSubTitle>{book.authors}</FavSubTitle>
-        <RateContainer>
-          <BookPrice>{book.price === "$0.00" ? "Free" : book.price}</BookPrice>
-          <div>{drawRating(`${book.rating}`)}</div>
-        </RateContainer>
+        <StyledLink to={`/bookstore/books/${book.isbn13}`}>
+          <FavTitle>{book.title}</FavTitle>
+          <FavSubTitle>{book.authors}</FavSubTitle>
+          <RateContainer>
+            <BookPrice>
+              {book.price === "$0.00" ? "Free" : book.price}
+            </BookPrice>
+            <div>{drawRating(`${book.rating}`)}</div>
+          </RateContainer>
+        </StyledLink>
+        <CartBtn type="button" onClick={() => handleCart(book)}>
+          Add to cart
+        </CartBtn>
       </InfoBlock>
       <LikeBtn onClick={() => handleFavorite(book)}>
         <Likes />
