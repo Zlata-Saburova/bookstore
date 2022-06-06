@@ -11,6 +11,9 @@ import { ReactComponent as Search } from "./search.svg";
 import { ReactComponent as Twitter } from "./twitter.svg";
 import { ReactComponent as Prev } from "./prev.svg";
 import { ReactComponent as Next } from "./next.svg";
+import { ReactComponent as Minus } from "./minus.svg";
+import { ReactComponent as Plus } from "./plus.svg";
+import { ReactComponent as Close } from "./close.svg";
 
 export {
   AccountSVG,
@@ -26,4 +29,7 @@ export {
   Twitter,
   Prev,
   Next,
+  Minus,
+  Plus,
+  Close,
 };
