@@ -34,8 +34,8 @@ import {
 } from "../../assets/icons";
 import { InfoBox } from "../InfoBox/InfoBox";
 import { useAppDispatch } from "../../store/hooks/hooks";
-import { addBookToCart, addFavorite } from "../../store/slices/userReducer";
-
+import { addFavorite } from "../../store/slices/userReducer";
+import { addBookToCart } from "../../store/slices/cartReducer";
 interface IProps {
   book: IBookDetailsApi;
 }
@@ -87,7 +87,7 @@ export const Book = ({ book }: IProps) => {
   };
 
   const handleCart = (book: IBookDetailsApi) => {
-    dispatch(addBookToCart(book));
+    dispatch(addBookToCart({ ...book, amount: 1 }));
   };
   return (
     <>

@@ -2,7 +2,8 @@ import { ReactNode, useId } from "react";
 import { DarkStar, LightStar, Likes } from "../../assets/icons";
 import { IBookDetailsApi } from "../../services/types";
 import { useAppDispatch } from "../../store/hooks/hooks";
-import { addBookToCart, deleteFavorite } from "../../store/slices/userReducer";
+import { addBookToCart } from "../../store/slices/cartReducer";
+import { deleteFavorite } from "../../store/slices/userReducer";
 import { BookPrice, RateContainer } from "../Book/styles";
 import {
   CartBtn,
@@ -40,7 +41,7 @@ export const FavoritesItem = ({ book }: IProps) => {
   };
 
   const handleCart = (book: IBookDetailsApi) => {
-    dispatch(addBookToCart(book));
+    dispatch(addBookToCart({ ...book, amount: 1 }));
   };
 
   return (

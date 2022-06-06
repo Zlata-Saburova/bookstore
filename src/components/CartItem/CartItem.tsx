@@ -1,48 +1,73 @@
 import { useState } from "react";
+import { Close, Minus, Plus } from "../../assets/icons";
 import { IBookDetailsApi } from "../../services/types";
-import { InfoBlock } from "../FavoritesItem/styles";
+import { useAppDispatch } from "../../store/hooks/hooks";
+import {
+  decreaseAmount,
+  increaseAmount,
+  removeBook,
+} from "../../store/slices/cartReducer";
+import { IBookCartItem } from "../../store/types";
+import { Img } from "../FavoritesItem/styles";
 import {
   Btn,
   CartContainer,
   CartSubTitle,
   CartTitle,
+  Count,
   Counter,
+  InfoBlock,
+  Price,
   StyledLink,
 } from "./styles";
 
 interface IProps {
-  book: IBookDetailsApi;
+  book: IBookCartItem;
 }
 
 export const CartItem = ({ book }: IProps) => {
-  const [count, setCount] = useState<number>(1);
+  const dispatch = useAppDispatch();
 
-  const handlePlus = () => {
-    setCount(count + 1);
+  const handleRemoveBook = (book: IBookDetailsApi) => {
+    dispatch(removeBook(book));
   };
 
-  const handleMinus = () => {
-    if (count > 1) {
-      setCount(count - 1);
+  const handlePlus = (book: IBookCartItem) => {
+    dispatch(increaseAmount(book));
+  };
+
+  const handleMinus = (book: IBookCartItem) => {
+    if (book.amount > 1) {
+      dispatch(decreaseAmount(book));
     }
   };
 
   return (
-    <CartContainer>
+    <CartContainer
+      whileHover={{ scale: 1.03, border: "5px solid rgb(71, 73, 115)" }}
+    >
       <StyledLink to={`/bookstore/books/${book.isbn13}`}>
-        <img src={book.image} alt={book.title} />
+        <Img src={book.image} alt={book.title} />
       </StyledLink>
       <InfoBlock>
         <StyledLink to={`/bookstore/books/${book.isbn13}`}>
           <CartTitle>{book.title}</CartTitle>
           <CartSubTitle>{book.authors}</CartSubTitle>
         </StyledLink>
+        <Counter>
+          <Btn onClick={() => handleMinus(book)}>
+            <Minus />
+          </Btn>
+          <Count>{book.amount}</Count>
+          <Btn onClick={() => handlePlus(book)}>
+            <Plus />
+          </Btn>
+        </Counter>
       </InfoBlock>
-      <Counter>
-        <Btn onClick={handleMinus}>-</Btn>
-        <p>{count}</p>
-        <Btn onClick={handlePlus}>+</Btn>
-      </Counter>
+      <Price>${(Number(book.price.slice(1)) * book.amount).toFixed(2)}</Price>
+      <Btn onClick={() => handleRemoveBook(book)}>
+        <Close />
+      </Btn>
     </CartContainer>
   );
 };

@@ -7,7 +7,7 @@ const initialState: IUserStore = {
   email: undefined,
   name: undefined,
   favorites: [],
-  cart: [],
+  password: undefined,
 };
 
 const userSlice = createSlice({
@@ -21,20 +21,23 @@ const userSlice = createSlice({
     setUserName: (state, action) => {
       state.name = action.payload;
     },
+    setPassword: (state, action) => {
+      state.password = action.payload;
+    },
     unsetUser: (state) => {
       state.isAuth = false;
       state.email = undefined;
     },
     addFavorite: (state, { payload }: PayloadAction<IBookDetailsApi>) => {
-      state.favorites.push(payload);
+      state.favorites = [
+        { ...payload },
+        ...state.favorites.filter((book) => book.isbn13 !== payload.isbn13),
+      ];
     },
     deleteFavorite: (state, { payload }: PayloadAction<IBookDetailsApi>) => {
       state.favorites = state.favorites.filter(
         (book) => book.isbn13 !== payload.isbn13
       );
-    },
-    addBookToCart: (state, { payload }: PayloadAction<IBookDetailsApi>) => {
-      state.cart.push(payload);
     },
   },
 });
@@ -43,8 +46,8 @@ export const {
   setUser,
   unsetUser,
   setUserName,
+  setPassword,
   addFavorite,
   deleteFavorite,
-  addBookToCart,
 } = userSlice.actions;
 export default userSlice.reducer;

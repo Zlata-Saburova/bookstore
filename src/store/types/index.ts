@@ -22,12 +22,23 @@ export interface IUserStore {
   email: string | undefined;
   name: string | undefined;
   favorites: IBookDetailsApi[];
-  cart: IBookDetailsApi[];
+  password: string | undefined;
 }
 
 export interface IArguments {
   title: string;
   page: string;
+}
+
+export interface ICartStore {
+  cartItems: IBookCartItem[];
+
+  total: number;
+  isLoading: boolean;
+}
+
+export interface IBookCartItem extends IBookDetailsApi {
+  amount: number;
 }
 
 export type RequestStatusType = "idle" | "success" | "loading" | "error";
