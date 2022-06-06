@@ -72,8 +72,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Img = styled.img`
-  max-width: 200px;
-  width: 100%;
+  width: 200px;
 `;
 
 export const CartBtn = styled.button`
