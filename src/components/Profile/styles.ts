@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../ui/media";
 import { typography } from "../../ui/typography";
 
 export const Subtitle = styled.h3`
@@ -22,6 +23,10 @@ export const Input = styled.input`
     font-weight: 400;
     font-size: 16px;
     line-height: 32px;
+  }
+
+  ${media.MD} {
+    width: 100%;
   }
 `;
 
@@ -67,6 +72,10 @@ export const FormContainer = styled.div`
   margin-bottom: 40px;
 
   border-bottom: 1px solid rgb(231, 231, 231);
+
+  ${media.MD} {
+    display: block;
+  }
 `;
 
 export const ErrorMassage = styled.div`

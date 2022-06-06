@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { media } from "../../ui/media";
 import { typography } from "../../ui/typography";
 
 export const StyledInfoBox = styled.div`
@@ -30,6 +31,10 @@ export const StyledForm = styled.form`
 
   max-width: 992px;
   width: 100%;
+
+  ${media.SM} {
+    display: block;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -42,6 +47,10 @@ export const StyledInput = styled.input`
   background-color: rgb(255, 255, 255);
 
   ${typography.input}
+
+  ${media.SM} {
+    margin-bottom: 24px;
+  }
 `;
 
 export const BoxButton = styled(motion.button)`
@@ -55,4 +64,8 @@ export const BoxButton = styled(motion.button)`
   background-color: rgb(13, 12, 29);
 
   cursor: pointer;
+
+  ${media.SM} {
+    width: 100%;
+  }
 `;

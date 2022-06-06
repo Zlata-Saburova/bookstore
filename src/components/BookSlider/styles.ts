@@ -29,11 +29,25 @@ export const SliderTitle = styled.h3`
 
   ${typography.H3}
   color: rgb(71, 73, 115);
+
+  @media (max-width: 500px) {
+    margin-bottom: 30px;
+
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+  }
 `;
 
 export const SliderPrice = styled.h3`
   ${typography.H3}
   color: rgb(22, 27, 51);
+
+  @media (max-width: 500px) {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+  }
 `;
 
 export const LastSlideText = styled(SliderTitle)`
@@ -42,4 +56,16 @@ export const LastSlideText = styled(SliderTitle)`
 
 export const LastSlideContainer = styled(SlideContainer)`
   height: 350px;
+
+  @media (max-width: 500px) {
+    height: 243px;
+  }
+`;
+
+export const Img = styled.img`
+  width: 300px;
+
+  @media (max-width: 500px) {
+    width: 200px;
+  }
 `;

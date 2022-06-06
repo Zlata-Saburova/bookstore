@@ -10,6 +10,7 @@ import {
   SliderPrice,
   LastSlideText,
   LastSlideContainer,
+  Img,
 } from "./styles";
 
 export const BookSlider = () => {
@@ -29,7 +30,7 @@ export const BookSlider = () => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 1020,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -45,7 +46,7 @@ export const BookSlider = () => {
           return (
             <CustomSlide key={book.isbn13} whileHover={{ scale: 1.03 }}>
               <SlideContainer>
-                <img src={book.image} alt={book.title} />
+                <Img src={book.image} alt={book.title} />
                 <div>
                   <SliderTitle>{book.title}</SliderTitle>
                   <SliderPrice>

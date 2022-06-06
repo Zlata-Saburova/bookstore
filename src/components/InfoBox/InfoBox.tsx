@@ -23,6 +23,7 @@ export const InfoBox = () => {
       </BoxDescription>
       <StyledForm>
         <StyledInput
+          type="email"
           placeholder="Your email"
           {...register("email", {
             required: true,
