@@ -1,16 +1,25 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { typography } from "../../ui/typography";
 
-export const CartContainer = styled.div`
+export const CartContainer = styled(motion.div)`
   display: flex;
   align-items: center;
+
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
 
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
 
-  border-bottom: 1px solid rgb(231, 231, 231);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 5px solid rgb(166, 156, 172);
+  border-radius: 20px;
+
+  cursor: pointer;
 `;
 
 export const CartTitle = styled.h3`
@@ -18,6 +27,8 @@ export const CartTitle = styled.h3`
 `;
 
 export const CartSubTitle = styled.p`
+  margin-bottom: 30px;
+
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -26,13 +37,48 @@ export const CartSubTitle = styled.p`
 export const Counter = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  max-width: 100px;
+  width: 100%;
 `;
 
 export const Btn = styled.button`
+  width: 24px;
+  height: 24px;
+
   cursor: pointer;
+
+  &:hover {
+    path {
+      fill: rgb(71, 73, 115);
+    }
+  }
 `;
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: rgb(0, 0, 0);
+`;
+
+export const Count = styled.p`
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+`;
+
+export const Price = styled.p`
+  margin-right: 50px;
+
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 60px;
+`;
+
+export const InfoBlock = styled.div`
+  display: grid;
+  gap: 10px;
+
+  margin-left: 20px;
+  margin-right: 100px;
 `;
