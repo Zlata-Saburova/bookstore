@@ -19,7 +19,7 @@ export const Favorites = () => {
       <>
         <Title>Favorites</Title>
         <FavoritesList books={favorites} />
-        <NewTitle>New books</NewTitle>
+        <NewTitle>Popular Books</NewTitle>
         <Link to="/bookstore/new">
           <BookSlider />
         </Link>
