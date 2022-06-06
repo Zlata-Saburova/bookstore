@@ -15,13 +15,16 @@ import {
   Tab,
   Tabs,
   Text,
-  LastInput,
   ErrorMassage,
   Notification,
 } from "./styles";
 import { useSelector } from "react-redux";
 import { routes } from "../../routes/routes";
-import { setUser, setUserName } from "../../store/slices/userReducer";
+import {
+  setPassword,
+  setUser,
+  setUserName,
+} from "../../store/slices/userReducer";
 import { RootState } from "../../store/store";
 import { useAppDispatch } from "../../store/hooks/hooks";
 
@@ -31,21 +34,20 @@ export const LogInForm = () => {
   const dispatch = useAppDispatch();
   const [isSignInError, setIsSignInError] = useState(false);
   const [isSignUpError, setIsSignUpError] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [tab, setTab] = useState("login");
   const { isAuth } = useSelector(({ user }: RootState) => user);
 
   const onSubmit = (data: any) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
-        setIsSignUp(true);
+        setTab("login");
       })
       .catch((error) => {
         const errorMessage = error.message;
         console.log(errorMessage);
         setIsSignUpError(true);
       });
-    navigate(routes.SIGN_IN);
   };
 
   const onSignIn = (data: any) => {
@@ -56,6 +58,7 @@ export const LogInForm = () => {
         navigate(routes.ACCOUNT);
         dispatch(setUser(userCredential.user.email));
         dispatch(setUserName(data.name));
+        dispatch(setPassword(data.password));
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -64,28 +67,26 @@ export const LogInForm = () => {
       });
   };
 
-  const [active, setActive] = useState("login");
-
-  const handleTab = (activeId: string) => {
-    setActive(activeId);
+  const handleTab = (tabId: string) => {
+    setTab(tabId);
   };
 
   return (
     <Container>
       <LogInBlock>
         <Tabs>
-          <Tab onClick={() => handleTab("login")} isActive={active === "login"}>
+          <Tab onClick={() => handleTab("login")} isActive={tab === "login"}>
             sign in
           </Tab>
           <Tab
             onClick={() => handleTab("registration")}
-            isActive={active === "registration"}
+            isActive={tab === "registration"}
           >
             sign UP
           </Tab>
         </Tabs>
 
-        {active === "login" ? (
+        {tab === "login" ? (
           <Form onSubmit={handleSubmit(onSignIn)}>
             {isAuth ? (
               ""
@@ -149,14 +150,6 @@ export const LogInForm = () => {
                 {...register("password")}
               />
             </label>
-            {isSignUp ? (
-              <Notification>
-                You have successfully registered, now go to the sign in tab and
-                enter your details.
-              </Notification>
-            ) : (
-              ""
-            )}
             {isSignUpError ? (
               <ErrorMassage>
                 Some of the fields are not filled, please try again.

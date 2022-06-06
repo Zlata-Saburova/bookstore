@@ -16,6 +16,7 @@ export const Input = styled.input`
 
   ${typography.input}
   border: 1px solid rgb(231, 231, 231);
+  color: rgb(0, 0, 0);
 
   &::placeholder {
     font-weight: 400;
