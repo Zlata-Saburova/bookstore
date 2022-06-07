@@ -48,10 +48,12 @@ export const SearchResults = () => {
           Prev
         </Button>
         <Pages>
-          <Page onClick={handlePrevButton}>{+page > 1 ? +page - 1 : ""}</Page>
           <CurrentPage>{page}</CurrentPage>
           <Page onClick={handleNextButton}>
             {total && +page < Math.ceil(+total) / 10 ? +page + 1 : ""}
+          </Page>
+          <Page onClick={handleNextButton}>
+            {total && +page < Math.ceil(+total) / 10 ? +page + 2 : ""}
           </Page>
         </Pages>
         <Button type="button" onClick={handleNextButton}>
