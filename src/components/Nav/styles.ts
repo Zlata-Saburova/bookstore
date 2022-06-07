@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
@@ -23,6 +24,99 @@ const StyledIcon = styled.div`
       stroke: rgb(71, 73, 115);
     }
   }
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
-export { StyledIcon, StyledNav };
+const BurgerIcon = styled.div`
+  display: none;
+
+  width: 24px;
+  height: 24px;
+
+  &:hover {
+    path {
+      stroke: rgb(166, 156, 172);
+    }
+  }
+
+  &:active {
+    path {
+      stroke: rgb(71, 73, 115);
+    }
+  }
+
+  @media (max-width: 600px) {
+    display: block;
+  }
+`;
+
+const BurgerMenu = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+
+  width: 50%;
+  height: 100vh;
+  background-color: rgb(166, 156, 172);
+`;
+
+const CloseContainer = styled.button`
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  margin-left: auto;
+  margin-bottom: 20px;
+
+  &:hover {
+    path {
+      stroke: rgb(166, 156, 172);
+    }
+  }
+
+  &:active {
+    path {
+      stroke: rgb(71, 73, 115);
+    }
+  }
+`;
+
+const Form = styled.form`
+  position: relative;
+
+  max-width: 280px;
+  width: 100%;
+  margin-left: 10px;
+  margin-bottom: 20px;
+`;
+
+const MenuLink = styled.button`
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+
+  cursor: pointer;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+`;
+export {
+  StyledIcon,
+  StyledNav,
+  BurgerIcon,
+  BurgerMenu,
+  CloseContainer,
+  Form,
+  MenuLink,
+  StyledLink,
+};
