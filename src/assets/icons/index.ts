@@ -14,6 +14,7 @@ import { ReactComponent as Next } from "./next.svg";
 import { ReactComponent as Minus } from "./minus.svg";
 import { ReactComponent as Plus } from "./plus.svg";
 import { ReactComponent as Close } from "./close.svg";
+import { ReactComponent as Burger } from "./burger.svg";
 
 export {
   AccountSVG,
@@ -32,4 +33,5 @@ export {
   Minus,
   Plus,
   Close,
+  Burger,
 };
