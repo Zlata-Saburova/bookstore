@@ -54,7 +54,6 @@ export const LogInForm = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
-        console.log(userCredential);
         navigate(routes.ACCOUNT);
         dispatch(setUser(userCredential.user.email));
         dispatch(setUserName(data.name));

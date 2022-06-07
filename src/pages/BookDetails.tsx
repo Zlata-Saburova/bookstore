@@ -11,7 +11,6 @@ export const BookDetails = () => {
   const { id = "" } = useParams();
 
   const { result } = useAppSelector(getBooks);
-  console.log(result);
 
   const dispatch = useAppDispatch();
 
