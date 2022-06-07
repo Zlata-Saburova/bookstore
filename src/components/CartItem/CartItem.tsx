@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Close, Minus, Plus } from "../../assets/icons";
 import { IBookDetailsApi } from "../../services/types";
 import { useAppDispatch } from "../../store/hooks/hooks";
@@ -11,6 +10,7 @@ import { IBookCartItem } from "../../store/types";
 import { Img } from "../FavoritesItem/styles";
 import {
   Btn,
+  BtnClose,
   CartContainer,
   CartSubTitle,
   CartTitle,
@@ -65,9 +65,9 @@ export const CartItem = ({ book }: IProps) => {
         </Counter>
       </InfoBlock>
       <Price>${(Number(book.price.slice(1)) * book.amount).toFixed(2)}</Price>
-      <Btn onClick={() => handleRemoveBook(book)}>
+      <BtnClose onClick={() => handleRemoveBook(book)}>
         <Close />
-      </Btn>
+      </BtnClose>
     </CartContainer>
   );
 };

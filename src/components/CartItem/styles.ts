@@ -20,10 +20,21 @@ export const CartContainer = styled(motion.div)`
   border-radius: 20px;
 
   cursor: pointer;
+
+  @media (max-width: 600px) {
+    position: relative;
+    display: block;
+
+    max-width: 350px;
+  }
 `;
 
 export const CartTitle = styled.h3`
   ${typography.H3}
+
+  @media (max-width: 600px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const CartSubTitle = styled.p`
@@ -41,6 +52,11 @@ export const Counter = styled.div`
 
   max-width: 100px;
   width: 100%;
+
+  @media (max-width: 600px) {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
 `;
 
 export const Btn = styled.button`
@@ -53,6 +69,25 @@ export const Btn = styled.button`
     path {
       fill: rgb(71, 73, 115);
     }
+  }
+`;
+
+export const BtnClose = styled.button`
+  width: 24px;
+  height: 24px;
+
+  cursor: pointer;
+
+  &:hover {
+    path {
+      fill: rgb(71, 73, 115);
+    }
+  }
+
+  @media (max-width: 600px) {
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
 `;
 

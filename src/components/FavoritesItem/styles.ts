@@ -7,7 +7,7 @@ export const FavContainer = styled(motion.div)`
   display: flex;
   align-items: center;
 
-  max-width: 700px;
+  max-width: 750px;
   width: 100%;
   margin: 0 auto;
 
@@ -20,6 +20,13 @@ export const FavContainer = styled(motion.div)`
   border-radius: 20px;
 
   cursor: pointer;
+
+  @media (max-width: 600px) {
+    position: relative;
+    display: block;
+
+    max-width: 350px;
+  }
 `;
 
 export const InfoBlock = styled.div`
@@ -32,6 +39,10 @@ export const InfoBlock = styled.div`
 
 export const FavTitle = styled.h3`
   ${typography.H3}
+
+  @media (max-width: 600px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const FavSubTitle = styled.p`
@@ -64,6 +75,12 @@ export const LikeBtn = styled.button`
       fill: none;
     }
   }
+
+  @media (max-width: 600px) {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -73,6 +90,14 @@ export const StyledLink = styled(Link)`
 
 export const Img = styled.img`
   width: 200px;
+
+  @media (max-width: 600px) {
+    display: block;
+
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 
 export const CartBtn = styled.button`
@@ -96,5 +121,9 @@ export const CartBtn = styled.button`
 
   &:active {
     background-color: rgb(71, 73, 115);
+  }
+
+  @media (max-width: 600px) {
+    max-width: 300px;
   }
 `;

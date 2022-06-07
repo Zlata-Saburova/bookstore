@@ -7,6 +7,11 @@ export const StyledHeaderForm = styled.form`
 
   max-width: 542px;
   width: 100%;
+  margin-left: 10px;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const SearchInput = styled.input`

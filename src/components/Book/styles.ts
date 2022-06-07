@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../ui/media";
 import { typography } from "../../ui/typography";
 
 interface IProps {
@@ -10,6 +11,10 @@ export const Container = styled.div`
   justify-content: space-between;
 
   margin-bottom: 72px;
+
+  ${media.MD} {
+    display: block;
+  }
 `;
 
 export const ImgContainer = styled.div`
@@ -22,6 +27,10 @@ export const ImgContainer = styled.div`
 
   background-color: rgb(241, 218, 196);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  ${media.MD} {
+    margin: 0 auto 48px;
+  }
 `;
 
 export const LikeContainer = styled.button`
@@ -60,6 +69,11 @@ export const InfoContainer = styled.div`
   padding-top: 40px;
 
   border-top: 1px solid rgb(231, 231, 231);
+
+  ${media.MD} {
+    max-width: 544px;
+    margin: 0 auto;
+  }
 `;
 
 export const BookPrice = styled.p`
@@ -75,6 +89,10 @@ export const RateContainer = styled.div`
   align-items: center;
 
   margin-bottom: 10px;
+
+  @media (max-width: 600px) {
+    padding-right: 10px;
+  }
 `;
 
 export const PropertyList = styled.ul`
@@ -167,10 +185,23 @@ export const CartButton = styled.button`
   &:active {
     background-color: rgb(22, 27, 51);
   }
+
+  ${media.MD} {
+    width: 100%;
+  }
+
+  ${media.SM} {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+  }
 `;
 
 export const TabsContainer = styled.div`
   border-bottom: 1px solid rgb(231, 231, 231);
+
+  ${media.MD} {
+  }
 `;
 
 export const Tab = styled.button<IProps>`
@@ -189,7 +220,6 @@ export const Tab = styled.button<IProps>`
 export const TabInfo = styled.div`
   margin-top: 48px;
   margin-bottom: 48px;
-  height: 60px;
 `;
 
 export const SocialsLink = styled.div`
