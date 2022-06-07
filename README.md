@@ -5,7 +5,7 @@
     <p align="center">
     ·
     <a href="https://zlata-saburova.github.io/bookstore/">View Demo</a>
-    · <p/>
+    · </p>
 </div>
 
 <!-- View my project: https://zlata-saburova.github.io/bookstore/ -->
