@@ -1,12 +1,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="bookstore.svg" alt="Logo" width="80" height="80">
+    <img src="bookstore.svg" alt="Logo" width="100" height="90">
     <p align="center">
     ·
     <a href="https://zlata-saburova.github.io/bookstore/">View Demo</a>
     · </p>
 </div>
+
+## About The Project
+
+<img src="preview.png" alt="preview" width="100%">
 
 ### Tools and packages
 
