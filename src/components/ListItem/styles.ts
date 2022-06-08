@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { typography } from "../../ui/typography";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { media } from "../../ui/media";
 
 const StyledListItem = styled(motion.li)`
   display: flex;
   flex-direction: column;
 
   padding: 0 16px;
-  
+
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border: 5px solid rgb(166, 156, 172);
   border-radius: 20px;
@@ -16,6 +17,22 @@ const StyledListItem = styled(motion.li)`
   cursor: pointer;
 
   transition: all 0.3s;
+
+  ${media.MD} {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+`;
+
+const Img = styled.img`
+  display: block;
+
+  width: 300px;
+  margin: 0 auto;
+
+  ${media.MD} {
+    width: 250px;
+  }
 `;
 
 const BookTitle = styled.h3`
@@ -50,6 +67,4 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-
-export { StyledListItem, BookTitle, BookSubtitle, Price, StyledLink };
-
+export { StyledListItem, BookTitle, BookSubtitle, Price, StyledLink, Img };
