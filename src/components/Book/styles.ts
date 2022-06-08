@@ -218,6 +218,7 @@ export const Tab = styled.button<IProps>`
 `;
 
 export const TabInfo = styled.div`
+  height: 80px;
   margin-top: 48px;
   margin-bottom: 48px;
 `;
