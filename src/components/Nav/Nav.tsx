@@ -42,6 +42,7 @@ export const Nav = () => {
     navigate(`/bookstore/search/${data.title}/1`);
     setTitle("");
     setIsMenuOpen(false);
+    document.body.style.overflow = "initial";
   };
 
   const handleMenu = () => {
