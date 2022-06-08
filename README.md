@@ -1,3 +1,4 @@
+<div id="top"></div>
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -31,6 +32,8 @@
 Bookstore is a platform for buying IT books, where you can get information about the book and see its preview.
 The user has the ability to search for a book by title and add the book they like to favourites.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Usage
 
 Search by:
@@ -49,6 +52,8 @@ User ability:
 - Add or remove book from favorites list
 - Add books to cart and see total price
 - Watch book preview pdf
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Installation
 
@@ -74,6 +79,8 @@ User ability:
     const firebaseConfig = {"your Firebase configuration"};
    ```
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Tools and packages
 
 - [React.js](https://reactjs.org/)
@@ -89,3 +96,5 @@ User ability:
 - [Framer Motion](https://www.framer.com/motion/)
 - [React Slick](https://react-slick.neostack.com/)
 - [gh-pages](https://pages.github.com/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
