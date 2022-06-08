@@ -26,12 +26,13 @@ Search by:
 
 User ability:
 
-- registration
-- authorization
-- reset password
-- change username and email
-- add or remove book from favorites list
-- add books to cart and see total price
+- Registration
+- Authorization
+- Reset password
+- Change username and email
+- Add or remove book from favorites list
+- Add books to cart and see total price
+- Watch book preview pdf
 
 ### Installation
 
@@ -53,11 +54,9 @@ User ability:
 
 6. Enter your Firebase configuration in "firebase.js"
 
-```js
-const firebaseConfig = {" your Firebase configuration"};
-```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+   ```js
+    const firebaseConfig = {"your Firebase configuration"};
+   ```
 
 ### Tools and packages
 
