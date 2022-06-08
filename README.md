@@ -8,6 +8,22 @@
     · </p>
 </div>
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+      <li>
+      <a href="#installation">Installation</a>
+      </li>
+    <li><a href="#Tools-and-packages">Tools and packages</a></li>
+ 
+  </ol>
+</details>
+
 ## About The Project
 
 <img src="preview.png" alt="preview" width="100%">
