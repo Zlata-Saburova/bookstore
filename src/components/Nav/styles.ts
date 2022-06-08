@@ -107,8 +107,24 @@ const MenuLink = styled.button`
 `;
 
 const StyledLink = styled(Link)`
+  position: relative;
+
   text-decoration: none;
   color: rgb(0, 0, 0);
+`;
+
+const Number = styled.div`
+  position: absolute;
+  top: -6px;
+  z-index: 3;
+  right: 0;
+  width: 7px;
+  height: 15px;
+
+  font-size: 15px;
+  line-height: 15px;
+  color: rgb(166, 156, 172);
+  background-color: rgb(255, 255, 255);
 `;
 export {
   StyledIcon,
@@ -119,4 +135,5 @@ export {
   Form,
   MenuLink,
   StyledLink,
+  Number,
 };

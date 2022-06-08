@@ -8,6 +8,7 @@ import {
   StyledIcon,
   StyledLink,
   StyledNav,
+  Number,
 } from "./styles";
 import {
   AccountSVG,
@@ -21,6 +22,8 @@ import { routes } from "../../routes/routes";
 import { FindButton, SearchInput } from "../HeaderForm/styles";
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useAppSelector } from "../../store/hooks/hooks";
+import { getCart, getUserInfo } from "../../store/selectors/userSelectors";
 
 export const Nav = () => {
   const { register, handleSubmit } = useForm();
@@ -50,15 +53,20 @@ export const Nav = () => {
     document.body.style.overflow = "initial";
   };
 
+  const { favorites } = useAppSelector(getUserInfo);
+  const { cartItems } = useAppSelector(getCart);
+
   return (
     <StyledNav>
       <StyledLink to={routes.FAVORITES}>
         <StyledIcon>
+          {favorites.length >= 1 ? <Number>{favorites.length}</Number> : ""}
           <Likes />
         </StyledIcon>
       </StyledLink>
       <StyledLink to={routes.CART}>
         <StyledIcon>
+          {cartItems.length >= 1 ? <Number>{cartItems.length}</Number> : ""}
           <CartSvg />
         </StyledIcon>
       </StyledLink>
